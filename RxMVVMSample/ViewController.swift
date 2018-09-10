@@ -13,6 +13,10 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
+    private let numberOfBadges = 15
+    private var badgeColors: [UIColor] = []
+    private var viewModel: ViewModelInputs!
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,6 +24,10 @@ class ViewController: UIViewController {
         collectionView.dataSource = self
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: nil, action: nil)
+
+        badgeColors = (0..<numberOfBadges).map { _ in UIColor.random }
+
+        viewModel = ViewModel
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,11 +43,14 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 3 : 12
+        return section == 0 ? numbero : 12
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let item = collectionView.dequeueReusableCell(withReuseIdentifier: "Cell", for: indexPath)
+        let bgView = UIView(frame: item.bounds)
+        bgView.backgroundColor = indexPath.section == 0 ? UIColor.lightGray : UIColor.white
+        item.backgroundView = bgView
         item.layoutIfNeeded()
         let button = item.viewWithTag(1) as? UIButton
         button?.backgroundColor = UIColor.random

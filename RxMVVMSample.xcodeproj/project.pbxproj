@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		20118CAC8B1EBDCACC983679 /* Pods_RxMVVMSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358BB41C5A3B475195CDABE6 /* Pods_RxMVVMSampleTests.framework */; };
 		E5B68699198C1CDE107B6868 /* Pods_RxMVVMSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD236BB03388D39E77CDBF09 /* Pods_RxMVVMSample.framework */; };
+		F91135E7214664880059C991 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91135E6214664870059C991 /* ViewModelType.swift */; };
 		F9799FDC2146076E003A6F97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FDB2146076E003A6F97 /* AppDelegate.swift */; };
 		F9799FDE2146076E003A6F97 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FDD2146076E003A6F97 /* ViewController.swift */; };
 		F9799FE12146076E003A6F97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F9799FDF2146076E003A6F97 /* Main.storyboard */; };
@@ -35,6 +36,7 @@
 		358BB41C5A3B475195CDABE6 /* Pods_RxMVVMSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMVVMSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5EF61C66B47742112E3BF420 /* Pods-RxMVVMSample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMVVMSample.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMVVMSample/Pods-RxMVVMSample.release.xcconfig"; sourceTree = "<group>"; };
 		9F7E15373510532D30D85A00 /* Pods-RxMVVMSampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMVVMSampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RxMVVMSampleTests/Pods-RxMVVMSampleTests.release.xcconfig"; sourceTree = "<group>"; };
+		F91135E6214664870059C991 /* ViewModelType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelType.swift; sourceTree = "<group>"; };
 		F9799FD82146076E003A6F97 /* RxMVVMSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RxMVVMSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9799FDB2146076E003A6F97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F9799FDD2146076E003A6F97 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				F9799FE42146076F003A6F97 /* LaunchScreen.storyboard */,
 				F9799FE72146076F003A6F97 /* Info.plist */,
 				F9799FFB21460843003A6F97 /* UIColor+.swift */,
+				F91135E6214664870059C991 /* ViewModelType.swift */,
 			);
 			path = RxMVVMSample;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				F9799FDE2146076E003A6F97 /* ViewController.swift in Sources */,
 				F9799FDC2146076E003A6F97 /* AppDelegate.swift in Sources */,
 				F9799FFE21460A11003A6F97 /* ViewModel.swift in Sources */,
+				F91135E7214664880059C991 /* ViewModelType.swift in Sources */,
 				F9799FFC21460843003A6F97 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,27 +9,90 @@
 import RxSwift
 import RxCocoa
 
-private typealias Dependency = (repository: Any, wireframe: Any)
+final class ViewModel: ViewModelType {
+    struct Inputs {
+        let danTap: Signal<Void>
+        let selectedTap: Signal<Int>
+        let selectableTap: Signal<Int>
+    }
 
-protocol ViewModelInputs {
+    struct Outputs {
+        let canComplete: Driver<Bool>
+        let selectedBadges: Driver<[Int]>
+        let selectableBadges: Driver<[Int]>
+        let badgeDidSelect: Signal<Int>
+        let badgeDidDeselect: Signal<Int>
+    }
 
-}
+    private let disposeBag = DisposeBag()
 
-protocol ViewModelOutputs {
+    private let selectedBadgesRelay = BehaviorRelay<[Int]>(value: [])
+    private let badgeDidSelectRelay = PublishRelay<Int>()
+    private let badgeDidDeselectRelay = PublishRelay<Int>()
 
-}
+    func transform(inputs: ViewModel.Inputs) -> ViewModel.Outputs {
+        let allBadgesRelay = BehaviorRelay<[Int]>(value: [])
+        let allBadges = allBadgesRelay.asDriver()
 
-private protocol ViewModelProtocol {
-    var inputs: ViewModelInputs { get }
-    var outputs: ViewModelOutputs { get }
-}
+        let selectedBadges = selectedBadgesRelay.asDriver()
 
-class ViewModel: ViewModelProtocol {
-    let inputs: ViewModelInputs
-    let outputs: ViewModelOutputs
+        let selectableBadges = Driver.combineLatest(allBadges, selectedBadges).map {
+            return ViewModel.dropSelected(from: $0.0, without: Set($0.1))
+        }
 
-    init(inputs: ViewModelInputs, outputs: ViewModelOutputs) {
-        self.inputs = inputs
-        self.outputs = outputs
+        let canComplete = selectedBadges
+            .map { !$0.isEmpty }
+            .asDriver()
+
+//        inputs.danTap.emit(onNext: <#T##((()) -> Void)?##((()) -> Void)?##(()) -> Void#>, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+
+        inputs.selectedTap
+            .emit(onNext: { [weak self] badge in
+                guard let `self` = self else { return }
+                self.deselect(badge: badge)
+            }).disposed(by: disposeBag)
+
+        inputs.selectableTap
+            .emit(onNext: { [weak self] badge in
+                guard let `self` = self else { return }
+                self.select(badge: badge)
+            }).disposed(by: disposeBag)
+
+        return Outputs(canComplete: canComplete,
+                      selectedBadges: selectedBadges,
+                      selectableBadges: selectableBadges,
+                      badgeDidSelect: badgeDidSelectRelay.asSignal(),
+                      badgeDidDeselect: badgeDidDeselectRelay.asSignal())
+    }
+
+    // 与えられたバッジを選択状態にする。
+    private func select(badge: Int) {
+        let currentSelection = self.selectedBadgesRelay.value
+        guard !currentSelection.contains(badge) else { return }
+
+        var newSelection = currentSelection
+        newSelection.append(badge)
+
+        self.selectedBadgesRelay.accept(newSelection)
+        self.badgeDidSelectRelay.accept(badge)
+    }
+
+
+    // 与えられたバッジを非選択状態にする。
+    private func deselect(badge: Int) {
+        let currentSelection = self.selectedBadgesRelay.value
+        var newSelection = currentSelection
+
+        guard let index = newSelection.index(of: badge) else { return }
+
+        newSelection.remove(at: index)
+
+        self.selectedBadgesRelay.accept(newSelection)
+        self.badgeDidDeselectRelay.accept(badge)
+    }
+
+    private static func dropSelected(from allBadges: [Int], without selectedBadges: Set<Int>) -> [Int] {
+        return allBadges
+            .filter { !selectedBadges.contains($0) }
     }
 }
