@@ -4,7 +4,7 @@ import RxSwift
 final class BadgeCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var button: UIButton!
 
-    private var disposeBag = DisposeBag()
+    private(set) var disposeBag = DisposeBag()
 
     override func awakeFromNib() {
         super.awakeFromNib()
