@@ -9,7 +9,9 @@
 import Foundation
 
 protocol ViewModelType {
+    associatedtype Dependency
     associatedtype Inputs
     associatedtype Outputs
-    func transform(inputs: Inputs) -> Outputs
+    init(inputs: Inputs, dependency: Dependency)
+    func transform() -> Outputs
 }
