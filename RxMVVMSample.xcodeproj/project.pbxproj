@@ -20,6 +20,7 @@
 		F9799FF12146076F003A6F97 /* RxMVVMSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FF02146076F003A6F97 /* RxMVVMSampleTests.swift */; };
 		F9799FFC21460843003A6F97 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FFB21460843003A6F97 /* UIColor+.swift */; };
 		F9799FFE21460A11003A6F97 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FFD21460A11003A6F97 /* ViewModel.swift */; };
+		F9F8513E2150ABCC00F48969 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F8513D2150ABCC00F48969 /* MainWireframe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		F9799FF22146076F003A6F97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9799FFB21460843003A6F97 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		F9799FFD21460A11003A6F97 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F9F8513D2150ABCC00F48969 /* MainWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
 		FD236BB03388D39E77CDBF09 /* Pods_RxMVVMSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMVVMSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -122,6 +124,7 @@
 				F9799FDB2146076E003A6F97 /* AppDelegate.swift */,
 				F9799FDD2146076E003A6F97 /* ViewController.swift */,
 				F9799FFD21460A11003A6F97 /* ViewModel.swift */,
+				F9F8513D2150ABCC00F48969 /* MainWireframe.swift */,
 				F9799FDF2146076E003A6F97 /* Main.storyboard */,
 				047906DD2148A3A500260E62 /* BadgeCollectionViewCell.xib */,
 				047906DF2148A5F100260E62 /* BadgeCollectionViewCell.swift */,
@@ -308,6 +311,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9799FDE2146076E003A6F97 /* ViewController.swift in Sources */,
+				F9F8513E2150ABCC00F48969 /* MainWireframe.swift in Sources */,
 				F9799FDC2146076E003A6F97 /* AppDelegate.swift in Sources */,
 				F9799FFE21460A11003A6F97 /* ViewModel.swift in Sources */,
 				F91135E7214664880059C991 /* ViewModelType.swift in Sources */,

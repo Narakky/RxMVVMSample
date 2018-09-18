@@ -8,6 +8,7 @@ class ViewController: UIViewController {
     
     private let numberOfBadges = 15
     private var viewModel: ViewModel!
+    private let disposeBag = DisposeBag()
     
     private let selectedTapPublishRelay = PublishRelay<Int>()
     private var selectedTapSignal: Signal<Int> {
@@ -17,21 +18,43 @@ class ViewController: UIViewController {
     private var selectableTapSignal: Signal<Int> {
         return selectableTapPublishRelay.asSignal()
     }
+
+    private var selectedIndexes: [Int] = []
+    private var selectableIndexes: [Int] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        selectableIndexes = (0..<numberOfBadges).map { $0 }
+
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(UINib(nibName: "BadgeCollectionViewCell", bundle: nil), forCellWithReuseIdentifier: "badgeCell")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "完了", style: .plain, target: nil, action: nil)
-        
+
         viewModel = ViewModel(inputs: ViewModel.Inputs(danTap: (navigationItem.rightBarButtonItem?.rx.tap.asSignal())!,
                                                        selectedTap: selectedTapSignal,
                                                        selectableTap: selectableTapSignal),
-                              dependency: ViewModel.Dependency())
+                              dependency: ViewModel.Dependency(wireframe: MainWireframe()))
         let outputs = viewModel.transform()
+        outputs.canComplete.drive((navigationItem.rightBarButtonItem?.rx.isEnabled)!).disposed(by: disposeBag)
+        outputs.badgeDidSelect.emit(onNext: { [weak self] index in
+            guard let `self` = self else { return }
+            if !self.selectedIndexes.contains(index) {
+                self.selectedIndexes.append(index)
+            }
+            self.selectableIndexes.removeAll { $0 == index }
+            self.collectionView.reloadData()
+        }).disposed(by: disposeBag)
+        outputs.badgeDidDeselect.emit(onNext: { [weak self] index in
+            guard let `self` = self else { return }
+            if !self.selectableIndexes.contains(index) {
+                self.selectableIndexes.append(index)
+            }
+            self.selectedIndexes.removeAll { $0 == index }
+            self.collectionView.reloadData()
+        }).disposed(by: disposeBag)
     }
     
     override func didReceiveMemoryWarning() {
@@ -47,7 +70,7 @@ extension ViewController: UICollectionViewDelegate, UICollectionViewDataSource, 
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return section == 0 ? 3 : 12
+        return section == 0 ? selectedIndexes.count : selectableIndexes.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

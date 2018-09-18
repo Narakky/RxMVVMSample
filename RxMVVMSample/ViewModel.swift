@@ -11,7 +11,7 @@ import RxCocoa
 
 final class ViewModel: ViewModelType {
     struct Dependency {
-
+        let wireframe: MainWireframe
     }
 
     struct Inputs {
@@ -56,7 +56,11 @@ final class ViewModel: ViewModelType {
             .map { !$0.isEmpty }
             .asDriver()
 
-//        inputs.danTap.emit(onNext: <#T##((()) -> Void)?##((()) -> Void)?##(()) -> Void#>, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        inputs.danTap.emit(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+
+            self.dependency.wireframe.showDoneAlert()
+        }).disposed(by: disposeBag)
 
         inputs.selectedTap
             .emit(onNext: { [weak self] badge in
