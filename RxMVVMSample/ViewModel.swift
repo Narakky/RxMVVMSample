@@ -10,6 +10,10 @@ import RxSwift
 import RxCocoa
 
 final class ViewModel: ViewModelType {
+    struct Dependency {
+        let wireframe: MainWireframe
+    }
+
     struct Inputs {
         let danTap: Signal<Void>
         let selectedTap: Signal<Int>
@@ -24,13 +28,21 @@ final class ViewModel: ViewModelType {
         let badgeDidDeselect: Signal<Int>
     }
 
-    private let disposeBag = DisposeBag()
+    private let inputs: Inputs
+    private let dependency: Dependency
 
     private let selectedBadgesRelay = BehaviorRelay<[Int]>(value: [])
     private let badgeDidSelectRelay = PublishRelay<Int>()
     private let badgeDidDeselectRelay = PublishRelay<Int>()
 
-    func transform(inputs: ViewModel.Inputs) -> ViewModel.Outputs {
+    private let disposeBag = DisposeBag()
+
+    init(inputs: ViewModel.Inputs, dependency: ViewModel.Dependency) {
+        self.inputs = inputs
+        self.dependency = dependency
+    }
+
+    func transform() -> ViewModel.Outputs {
         let allBadgesRelay = BehaviorRelay<[Int]>(value: [])
         let allBadges = allBadgesRelay.asDriver()
 
@@ -44,7 +56,11 @@ final class ViewModel: ViewModelType {
             .map { !$0.isEmpty }
             .asDriver()
 
-//        inputs.danTap.emit(onNext: <#T##((()) -> Void)?##((()) -> Void)?##(()) -> Void#>, onCompleted: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>, onDisposed: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        inputs.danTap.emit(onNext: { [weak self] _ in
+            guard let `self` = self else { return }
+
+            self.dependency.wireframe.showDoneAlert()
+        }).disposed(by: disposeBag)
 
         inputs.selectedTap
             .emit(onNext: { [weak self] badge in

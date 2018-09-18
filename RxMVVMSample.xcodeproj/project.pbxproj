@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		047906DE2148A3A500260E62 /* BadgeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 047906DD2148A3A500260E62 /* BadgeCollectionViewCell.xib */; };
+		047906E02148A5F100260E62 /* BadgeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047906DF2148A5F100260E62 /* BadgeCollectionViewCell.swift */; };
 		20118CAC8B1EBDCACC983679 /* Pods_RxMVVMSampleTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 358BB41C5A3B475195CDABE6 /* Pods_RxMVVMSampleTests.framework */; };
 		E5B68699198C1CDE107B6868 /* Pods_RxMVVMSample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD236BB03388D39E77CDBF09 /* Pods_RxMVVMSample.framework */; };
 		F91135E7214664880059C991 /* ViewModelType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F91135E6214664870059C991 /* ViewModelType.swift */; };
@@ -18,6 +20,7 @@
 		F9799FF12146076F003A6F97 /* RxMVVMSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FF02146076F003A6F97 /* RxMVVMSampleTests.swift */; };
 		F9799FFC21460843003A6F97 /* UIColor+.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FFB21460843003A6F97 /* UIColor+.swift */; };
 		F9799FFE21460A11003A6F97 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9799FFD21460A11003A6F97 /* ViewModel.swift */; };
+		F9F8513E2150ABCC00F48969 /* MainWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9F8513D2150ABCC00F48969 /* MainWireframe.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +34,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		047906DD2148A3A500260E62 /* BadgeCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BadgeCollectionViewCell.xib; sourceTree = "<group>"; };
+		047906DF2148A5F100260E62 /* BadgeCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BadgeCollectionViewCell.swift; sourceTree = "<group>"; };
 		267831082EACBA50F1521E1D /* Pods-RxMVVMSampleTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMVVMSampleTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMVVMSampleTests/Pods-RxMVVMSampleTests.debug.xcconfig"; sourceTree = "<group>"; };
 		2CD1AE44749C7D33188A03AC /* Pods-RxMVVMSample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RxMVVMSample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RxMVVMSample/Pods-RxMVVMSample.debug.xcconfig"; sourceTree = "<group>"; };
 		358BB41C5A3B475195CDABE6 /* Pods_RxMVVMSampleTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMVVMSampleTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,6 +54,7 @@
 		F9799FF22146076F003A6F97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F9799FFB21460843003A6F97 /* UIColor+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+.swift"; sourceTree = "<group>"; };
 		F9799FFD21460A11003A6F97 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		F9F8513D2150ABCC00F48969 /* MainWireframe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWireframe.swift; sourceTree = "<group>"; };
 		FD236BB03388D39E77CDBF09 /* Pods_RxMVVMSample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RxMVVMSample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -118,7 +124,10 @@
 				F9799FDB2146076E003A6F97 /* AppDelegate.swift */,
 				F9799FDD2146076E003A6F97 /* ViewController.swift */,
 				F9799FFD21460A11003A6F97 /* ViewModel.swift */,
+				F9F8513D2150ABCC00F48969 /* MainWireframe.swift */,
 				F9799FDF2146076E003A6F97 /* Main.storyboard */,
+				047906DD2148A3A500260E62 /* BadgeCollectionViewCell.xib */,
+				047906DF2148A5F100260E62 /* BadgeCollectionViewCell.swift */,
 				F9799FE22146076F003A6F97 /* Assets.xcassets */,
 				F9799FE42146076F003A6F97 /* LaunchScreen.storyboard */,
 				F9799FE72146076F003A6F97 /* Info.plist */,
@@ -223,6 +232,7 @@
 			files = (
 				F9799FE62146076F003A6F97 /* LaunchScreen.storyboard in Resources */,
 				F9799FE32146076F003A6F97 /* Assets.xcassets in Resources */,
+				047906DE2148A3A500260E62 /* BadgeCollectionViewCell.xib in Resources */,
 				F9799FE12146076E003A6F97 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,9 +311,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				F9799FDE2146076E003A6F97 /* ViewController.swift in Sources */,
+				F9F8513E2150ABCC00F48969 /* MainWireframe.swift in Sources */,
 				F9799FDC2146076E003A6F97 /* AppDelegate.swift in Sources */,
 				F9799FFE21460A11003A6F97 /* ViewModel.swift in Sources */,
 				F91135E7214664880059C991 /* ViewModelType.swift in Sources */,
+				047906E02148A5F100260E62 /* BadgeCollectionViewCell.swift in Sources */,
 				F9799FFC21460843003A6F97 /* UIColor+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -465,17 +477,20 @@
 			baseConfigurationReference = 2CD1AE44749C7D33188A03AC /* Pods-RxMVVMSample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 662WVRJ7JE;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = XLM7K96PXP;
 				INFOPLIST_FILE = RxMVVMSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.narakky.RxMVVMSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "33947541-ba37-4858-8337-2c5055dc52a5";
+				PROVISIONING_PROFILE_SPECIFIER = Team_DEV;
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -484,17 +499,19 @@
 			baseConfigurationReference = 5EF61C66B47742112E3BF420 /* Pods-RxMVVMSample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 662WVRJ7JE;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = RxMVVMSample/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.co.narakky.RxMVVMSample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
